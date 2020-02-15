@@ -1,0 +1,51 @@
+<main *ngIf="productsList.length > 0; then productBlock"></main>
+<ng-template #productBlock>
+  <section>
+    <table mat-table [dataSource]="productsList">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Product Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef>Product Description</th>
+        <td mat-cell *matCellDef="let element">{{ element.description }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef>Price</th>
+        <td mat-cell *matCellDef="let element">{{ element.price }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef>Delete</th>
+        <td mat-cell *matCellDef="let element">
+          <button
+            id="{{ element.id }}"
+            mat-button
+            color="warn"
+            (click)="deleteData(element.id)"
+          >
+            Delete Data
+          </button>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="update">
+        <th mat-header-cell *matHeaderCellDef>Update</th>
+        <td mat-cell *matCellDef="let element">
+          <button
+            mat-button
+            color="primary"
+            [routerLink]="['update-product', element.id]"
+          >
+            Update Data
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="headersArray; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: headersArray"></tr>
+    </table>
+  </section>
+</ng-template>

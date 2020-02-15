@@ -1,0 +1,30 @@
+section {
+  display: flex;
+  justify-content: center;
+  max-height: 50vh;
+  overflow: auto;
+  box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.2);
+}
+
+table[mat-table] {
+  width: 100%;
+}
+
+[mat-cell] {
+  text-align: center;
+  padding: 2vh 1vh;
+}
+
+tr:hover {
+  background: #efefef;
+}
+
+th {
+  background: #efefef;
+}
+
+.mat-header-cell {
+  text-align: center;
+  font-size: 1.1rem;
+  padding: 2vh 1vh;
+}

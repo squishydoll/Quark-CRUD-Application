@@ -1,0 +1,48 @@
+<main>
+  <form [formGroup]="addDataForm">
+    <div>
+      <mat-form-field class="field-full-width">
+        <mat-label>Name</mat-label>
+        <input matInput [formControl]="name" />
+        <mat-error color="primary" *ngIf="name.touched && name.hasError('required')">
+          *Name is required.
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="field-full-width">
+        <mat-label>Description</mat-label>
+        <input matInput [formControl]="description" />
+        <mat-error
+          color="primary"
+          *ngIf="description.touched && description.hasError('required')"
+        >
+          *Description is required.
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="field-full-width">
+        <mat-label>Price</mat-label>
+        <input matInput [formControl]="price" />
+        <mat-error color="accent" *ngIf="price.touched && price.hasError('required')">
+          *Price is required.
+        </mat-error>
+        <mat-error *ngIf="price.touched && price.hasError('pattern')">
+          *Only numbers are allowed.
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <button
+      class="field-full-width"
+      mat-raised-button
+      color="accent"
+      [disabled]="addDataForm.invalid"
+      (click)="addData()"
+    >
+      Add Data
+    </button>
+  </form>
+
+  <app-display-products></app-display-products>
+</main>

@@ -1,0 +1,45 @@
+<main>
+  <section>
+    <form [formGroup]="updateForm">
+      <div>
+        <mat-form-field class="field-full-width">
+          <mat-label>Name</mat-label>
+          <input matInput [formControl]="name" />
+          <mat-error *ngIf="name.touched && name.hasError('required')">
+            *Name is required.
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="field-full-width">
+          <mat-label>Description</mat-label>
+          <input matInput [formControl]="description" />
+          <mat-error *ngIf="description.touched && description.hasError('required')">
+            *Description is required.
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="field-full-width">
+          <mat-label>Price</mat-label>
+          <input matInput [formControl]="price" />
+          <mat-error *ngIf="price.touched && price.hasError('required')">
+            *Price is required.
+          </mat-error>
+          <mat-error *ngIf="price.touched && price.hasError('pattern')">
+            *Only numbers are allowed.
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <button
+        class="field-full-width"
+        mat-raised-button
+        color="accent"
+        [disabled]="updateForm.invalid"
+        (click)="updateProduct()"
+      >
+        Submit
+      </button>
+    </form>
+  </section>
+</main>
